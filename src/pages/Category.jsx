@@ -21,7 +21,7 @@ const Category = () => {
           listingsRef, 
           where('type', '==', params.categoryName),
           orderBy('timestamp', 'desc'),
-          limit(10)
+          limit(2)
         )
 
         const querySnap = await getDocs(q)

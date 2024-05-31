@@ -116,18 +116,31 @@ button {
 .listingDetails,
 .category,
 .explore {
-  margin: 1rem;
+  margin: 1rem; 
 }
-@media (min-width: 1024px) {
+
+@media (min-width: 500px) {
   .pageContainer,
   .offers,
   .profile,
   .listingDetails,
   .category,
   .explore {
-    margin: 3rem;
+    margin: 2rem;
   }
 }
+
+@media (min-width: 824px) {
+  .pageContainer,
+  .offers,
+  .profile,
+  .listingDetails,
+  .category,
+  .explore {
+    margin: 3rem 6rem;
+  }
+}
+
 
 .pageContainer {
   margin-bottom: 8rem;
@@ -485,7 +498,7 @@ button {
 }
 @media (min-width: 1024px) {
   .categoryListingImg {
-    width: 19%;
+    width: 25%;
     height: 217px;
   }
 }
@@ -495,7 +508,7 @@ button {
 }
 @media (min-width: 1024px) {
   .categoryListingDetails {
-    width: 79%;
+    width: 70%;
   }
 }
 
