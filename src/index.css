@@ -392,6 +392,12 @@ button {
   height: 100%;
 }
 
+@media (min-width: 1024px) {
+  .swiperSlideDiv {
+    min-height: 25rem !important;
+  }
+}
+
 .swiperSlideImg {
   width: 100%;
   object-fit: cover;
