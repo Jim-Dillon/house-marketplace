@@ -1,7 +1,7 @@
-import {useState, useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
-import {collection, getDocs, query, orderBy, limit} from 'firebase/firestore'
-import {db} from '../firebase.config'
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { collection, getDocs, query, orderBy, limit } from 'firebase/firestore'
+import { db } from '../firebase.config'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
@@ -38,12 +38,16 @@ const Slider = () => {
 
         fetchListings()
     }, [])
-    
-    if(loading) {
-        return <Spinner/>
+
+    const formatPrice = (price) => {
+        return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    };
+
+    if (loading) {
+        return <Spinner />
     }
 
-    if(listings.length === 0) {
+    if (listings.length === 0) {
         return <></>
     }
 
@@ -54,24 +58,24 @@ const Slider = () => {
             <Swiper
                 slidesPerView={1}
                 modules={[Navigation, Pagination, Scrollbar, A11y]}
-                pagination={{clickable: true}}   
+                pagination={{ clickable: true }}
                 style={{ height: "300px" }}
             >
-                {listings.map(({data, id}) => (
+                {listings.map(({ data, id }) => (
                     <SwiperSlide
                         key={id}
                         onClick={() => navigate(`/category/${data.type}/${id}`)}
                     >
-                        <div 
+                        <div
                             style={{
                                 background: `url(${data.imgUrls[0]}) center no-repeat`,
-                                backgroundSize: 'cover' 
-                            }} 
+                                backgroundSize: 'cover'
+                            }}
                             className="swiperSlideDiv"
                         >
                             <p className="swiperSlideText">{data.name}</p>
-                            <p 
-                                className="swiperSlidePrice">${data.discountedPrice ?? data.regularPrice} {data.type === 'rent' && '/ month'}
+                            <p
+                                className="swiperSlidePrice">${formatPrice(data.discountedPrice ?? data.regularPrice)} {data.type === 'rent' && '/ month'}
                             </p>
                         </div>
                     </SwiperSlide>
